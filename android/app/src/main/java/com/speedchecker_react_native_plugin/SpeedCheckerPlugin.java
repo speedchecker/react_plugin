@@ -11,9 +11,12 @@ import com.speedchecker.android.sdk.Public.SpeedTestListener;
 import com.speedchecker.android.sdk.Public.SpeedTestResult;
 import com.speedchecker.android.sdk.SpeedcheckerSDK;
 
+import java.text.DecimalFormat;
+
 public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 
 	private static final String PLUGIN_NAME = "SpeedCheckerPlugin";
+	DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
 	private static ReactApplicationContext reactContext;
 
@@ -69,8 +72,8 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				map.putString("server", speedTestResult.getServer().Domain);
 				map.putInt("ping", speedTestResult.getPing());
 				map.putInt("jitter", speedTestResult.getJitter());
-				map.putDouble("downloadSpeed", speedTestResult.getDownloadSpeed());
-				map.putDouble("uploadSpeed", speedTestResult.getUploadSpeed());
+				map.putDouble("downloadSpeed", Double.parseDouble(decimalFormat.format(speedTestResult.getDownloadSpeed())));
+				map.putDouble("uploadSpeed", Double.parseDouble(decimalFormat.format(speedTestResult.getUploadSpeed())));
 				map.putString("connectionType", speedTestResult.getConnectionTypeHuman());
 				map.putString("serverInfo", speedTestResult.getServerInfo());
 				map.putString("deviceInfo", speedTestResult.getDeviceInfo());
