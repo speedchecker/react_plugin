@@ -155,7 +155,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Download Test");
 				map.putInt("percent", percent);
-				map.putDouble("currentSpeed", speedMbs);
+				map.putDouble("currentSpeed", Double.parseDouble(decimalFormat.format(speedMbs)));
 				map.putDouble("downloadTransferredMb", transferredMb);
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
@@ -164,7 +164,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 			public void onDownloadTestFinished(double speedMbs) {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Download Test");
-				map.putDouble("downloadSpeed", speedMbs);
+				map.putDouble("downloadSpeed", Double.parseDouble(decimalFormat.format(speedMbs)));
 			}
 
 			@Override
@@ -179,7 +179,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Upload Test");
 				map.putInt("percent", percent);
-				map.putDouble("currentSpeed", speedMbs);
+				map.putDouble("currentSpeed", Double.parseDouble(decimalFormat.format(speedMbs)));
 				map.putDouble("uploadTransferredMb", transferredMb);
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
@@ -188,7 +188,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 			public void onUploadTestFinished(double speedMbs) {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Upload Test");
-				map.putDouble("uploadSpeed", speedMbs);
+				map.putDouble("uploadSpeed", Double.parseDouble(decimalFormat.format(speedMbs)));
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
 
