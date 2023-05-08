@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 import SpeedCheckerPlugin from './SpeedCheckerPlugin';
-import { Double } from 'react-native/Libraries/Types/CodegenTypes';
 
 
 const App = () => {
@@ -18,28 +17,39 @@ const App = () => {
   useEffect(() => {
     SpeedCheckerPlugin.addTestStartedListener((event: {
       status: React.SetStateAction<string>;
-      ping: React.SetStateAction<number>;
-      currentSpeed: React.SetStateAction<number>;
-      downloadSpeed: React.SetStateAction<number>;
-      uploadSpeed: React.SetStateAction<number>;
+      ping: React.SetStateAction<string>;
+      currentSpeed: React.SetStateAction<string>;
+      downloadSpeed: React.SetStateAction<string>;
+      uploadSpeed: React.SetStateAction<string>;
       server: React.SetStateAction<string>;
       connectionType: React.SetStateAction<string>;
      }) => {
       setStatus(event.status || '');
-      setPing(event.ping + ' ms');
-      setcurrentSpeed(event.currentSpeed + ' Mbps');
-      setDownload(event.downloadSpeed + ' Mbps');
-      setUpload(event.uploadSpeed + ' Mbps');
+      setPing(event.ping);
+      setcurrentSpeed(event.currentSpeed);
+      setDownload(event.downloadSpeed);
+      setUpload(event.uploadSpeed);
       setServer(event.server);
       setConnectionType(event.connectionType);
     });
     return () => {
-      DeviceEventEmitter.removeAllListeners('onTestStarted');
+      SpeedCheckerPlugin.removeTestStartedListener();
     };
   }, []);
 
   const startTest = () => {
     SpeedCheckerPlugin.startTest();
+  };
+
+  const stopTest = () => {
+    SpeedCheckerPlugin.stopTest();
+    setStatus('');
+    setPing('');
+    setcurrentSpeed('');
+    setDownload('');
+    setUpload('');
+    setServer('');
+    setConnectionType('');
   };
 
   return (
@@ -51,9 +61,14 @@ const App = () => {
       <Text style={styles.resultText}>Upload speed: {upload}</Text>
       <Text style={styles.resultText}>Server: {server}</Text>
       <Text style={styles.resultText}>Connection type: {connectionType}</Text>
-      <TouchableOpacity style={styles.button} onPress={startTest}>
-        <Text style={styles.buttonText}>Start Test</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.button} onPress={startTest}>
+          <Text style={styles.buttonText}>Start Test</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.button, styles.stopButton]} onPress={stopTest}>
+          <Text style={styles.buttonText}>Stop Test</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -62,28 +77,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    marginHorizontal: 30,
   },
   statusText: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
+    alignSelf: 'center',
   },
   resultText: {
     fontSize: 18,
     textAlign: 'center',
   },
-  button: {
+  buttonsContainer: {
+    flexDirection: 'row',
     marginTop: 20,
+  },
+  button: {
     backgroundColor: 'blue',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    flex: 1,
+    marginHorizontal: 5,
+  },
+  stopButton: {
+    backgroundColor: 'red',
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
   },
 });
 

@@ -32,11 +32,6 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 	public void initialize() {
 		super.initialize();
 		SpeedcheckerSDK.init(reactContext);
-	}
-
-	@ReactMethod
-	public void startTest() {
-		SpeedcheckerSDK.SpeedTest.startTest(reactContext);
 		SpeedcheckerSDK.SpeedTest.setOnSpeedTestListener(new SpeedTestListener() {
 			@Override
 			public void onTestStarted() {
@@ -173,5 +168,18 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
 		});
+	}
+
+	@ReactMethod
+	public void startTest() {
+		SpeedcheckerSDK.SpeedTest.startTest(reactContext);
+	}
+
+	@ReactMethod
+	public void stopTest() {
+		SpeedcheckerSDK.SpeedTest.interruptTest();
+//		WritableMap map = new WritableNativeMap();
+//		map.putString("status", "Speed test stopped");
+//		reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 	}
 }
