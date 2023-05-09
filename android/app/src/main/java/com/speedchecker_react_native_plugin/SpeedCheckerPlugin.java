@@ -9,10 +9,13 @@ import androidx.core.app.ActivityCompat;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.speedchecker.android.sdk.Public.Server;
 import com.speedchecker.android.sdk.Public.SpeedTestListener;
+import com.speedchecker.android.sdk.Public.SpeedTestOptions;
 import com.speedchecker.android.sdk.Public.SpeedTestResult;
 import com.speedchecker.android.sdk.SpeedcheckerSDK;
 
@@ -22,6 +25,9 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 
 	private static final String PLUGIN_NAME = "SpeedCheckerPlugin";
 	DecimalFormat decimalFormat = new DecimalFormat("#.##");
+	private Server server = null;
+	private int speedTestType = 0;
+
 
 	private static ReactApplicationContext reactContext;
 
@@ -42,37 +48,49 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 		SpeedcheckerSDK.init(reactContext);
 	}
 
-	private void checkPermissions(ReactApplicationContext context) {
-		if (context != null) {
+	private void checkPermissions() {
+		if (reactContext != null) {
 			if (Build.VERSION.SDK_INT >= 30) {
-				if (ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_FINE_LOCATION") != 0) {
+				if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0) {
 					WritableMap map = new WritableNativeMap();
 					map.putString("error", "Please grant location permission");
 					reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-					Toast.makeText(context, "Please grant location permission", Toast.LENGTH_SHORT).show();
-				} else SpeedcheckerSDK.SpeedTest.startTest(reactContext);;
+					Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
+				} else startTestWithParams();
 
-				if (ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
+				if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
 					WritableMap map = new WritableNativeMap();
 					map.putString("error", "Please grant background location permission");
 					reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-					Toast.makeText(context, "Please grant location permission", Toast.LENGTH_SHORT).show();
-				} else SpeedcheckerSDK.SpeedTest.startTest(reactContext);
+					Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
+				} else startTestWithParams();
 
 			} else if (Build.VERSION.SDK_INT == 29) {
-				if (ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_FINE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
+				if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
 					WritableMap map = new WritableNativeMap();
 					map.putString("error", "Please grant location permission");
 					reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-					Toast.makeText(context, "Please grant location permission", Toast.LENGTH_SHORT).show();
+					Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
 				}
-			} else if (ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(context, "android.permission.ACCESS_FINE_LOCATION") != 0) {
+			} else if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0) {
 				WritableMap map = new WritableNativeMap();
 				map.putString("error", "Please grant background location permission");
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-				Toast.makeText(context, "Please grant location permission", Toast.LENGTH_SHORT).show();
-			} else SpeedcheckerSDK.SpeedTest.startTest(reactContext);
+				Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
+			} else startTestWithParams();
 
+		}
+	}
+
+	public void startTestWithParams() {
+		if (speedTestType != 0) {
+			SpeedTestOptions options = new SpeedTestOptions();
+//			options.setTestType(speedTestType);
+			SpeedcheckerSDK.SpeedTest.startTest(reactContext, options);
+		} else if (server != null) {
+			SpeedcheckerSDK.SpeedTest.startTest(reactContext, server);
+		} else {
+			SpeedcheckerSDK.SpeedTest.startTest(reactContext);
 		}
 	}
 
@@ -214,7 +232,30 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
 		});
-		checkPermissions(reactContext);
+		checkPermissions();
+	}
+
+	@ReactMethod
+	public void startTestWithTestType(int testType) {
+		speedTestType = testType;
+		startTest();
+	}
+
+	@ReactMethod
+	public void startTestWithCustomServer(ReadableMap map) {
+		server = new Server();
+		server.Domain = map.getString("domain");
+		server.DownloadFolderPath = map.getString("downloadFolderPath");
+		server.Id = map.getInt("id");
+		server.Scheme = "https";
+		server.Script = "php";
+		server.UploadFolderPath = map.getString("uploadFolderPath");
+		server.Version = 3;
+		server.Location = server.new Location();
+		server.Location.City = map.getString("city");
+		server.Location.Country = map.getString("country");
+		server.Location.CountryCode = map.getString("countryCode");
+		startTest();
 	}
 
 	@ReactMethod

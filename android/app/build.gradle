@@ -152,8 +152,7 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
-    implementation 'com.speedchecker:android-sdk:4.2.168-android-12-demo'
+    implementation 'com.speedchecker:android-sdk:4.2+'
     implementation 'com.android.volley:volley:1.2.0'
 
 

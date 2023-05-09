@@ -6,6 +6,12 @@ const SpeedChecker = {
   startTest: () => {
     SpeedCheckerPlugin.startTest();
   },
+  startTestWithTestType: (speedTestType) => {
+    SpeedCheckerPlugin.startTestWithTestType(speedTestType);
+  },
+  startTestWithCustomServer: (customServerParams) => {
+    SpeedCheckerPlugin.startTestWithCustomServer(customServerParams);
+  },
   stopTest: () => {
     SpeedCheckerPlugin.stopTest();
   },
