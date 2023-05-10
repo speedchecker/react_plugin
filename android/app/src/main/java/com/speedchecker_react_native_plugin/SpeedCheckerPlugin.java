@@ -165,7 +165,6 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Download Test");
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-
 			}
 
 			@Override
