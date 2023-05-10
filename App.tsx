@@ -15,6 +15,12 @@ const App = () => {
   const [connectionType, setConnectionType] = useState('');
 
   useEffect(() => {
+    return () => {
+      SpeedCheckerPlugin.removeTestStartedListener();
+    };
+  }, []);
+
+  const startTest = () => {
     SpeedCheckerPlugin.addTestStartedListener((event: {
       status: React.SetStateAction<string>;
       ping: React.SetStateAction<string>;
@@ -32,24 +38,13 @@ const App = () => {
       setServer(event.server);
       setConnectionType(event.connectionType);
     });
-    return () => {
-      SpeedCheckerPlugin.removeTestStartedListener();
-    };
-  }, []);
-
-  const startTest = () => {
     SpeedCheckerPlugin.startTest();
   };
 
   const stopTest = () => {
     SpeedCheckerPlugin.stopTest();
-    setStatus('');
-    setPing('');
-    setcurrentSpeed('');
-    setDownload('');
-    setUpload('');
-    setServer('');
-    setConnectionType('');
+    setStatus('Speed Test stopped');
+    SpeedCheckerPlugin.removeTestStartedListener();
   };
 
   return (

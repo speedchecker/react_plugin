@@ -85,7 +85,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 	public void startTestWithParams() {
 		if (speedTestType != 0) {
 			SpeedTestOptions options = new SpeedTestOptions();
-//			options.setTestType(speedTestType);
+//			options.setSpeedTestType(speedTestType);
 			SpeedcheckerSDK.SpeedTest.startTest(reactContext, options);
 		} else if (server != null) {
 			SpeedcheckerSDK.SpeedTest.startTest(reactContext, server);
@@ -165,7 +165,6 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Download Test");
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-
 			}
 
 			@Override
@@ -183,6 +182,7 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 				WritableMap map = new WritableNativeMap();
 				map.putString("status", "Download Test");
 				map.putDouble("downloadSpeed", Double.parseDouble(decimalFormat.format(speedMbs)));
+				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
 
 			@Override
@@ -261,8 +261,5 @@ public class SpeedCheckerPlugin extends ReactContextBaseJavaModule {
 	@ReactMethod
 	public void stopTest() {
 		SpeedcheckerSDK.SpeedTest.interruptTest();
-//		WritableMap map = new WritableNativeMap();
-//		map.putString("status", "Speed test stopped");
-//		reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 	}
 }
