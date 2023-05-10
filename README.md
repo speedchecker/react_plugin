@@ -2,8 +2,7 @@
 ![platforms](https://img.shields.io/badge/platforms-android%20%7C%20ios-yellowgreen.svg)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-# React Native plugin for Speedchecker SDK
-## Free speed test features for your own app
+# React Native plugin for SpeedChecker SDK
 
 SpeedChecker plugin allows developers to integrate speed test features into their own React Native apps. You can also try our native apps on [Google Play](https://play.google.com/store/apps/details?id=uk.co.broadbandspeedchecker\&hl=en\_US) and [App Store](https://itunes.apple.com/app/id658790195), they are powered by the latest Speedchecker SDK versions. More information about [SpeedChecker SDKs](https://www.speedchecker.com/speed-test-tools/mobile-apps-and-sdks.html)
 
@@ -13,8 +12,8 @@ SpeedChecker plugin allows developers to integrate speed test features into thei
 * robust measuring of cellular, wireless and even local network
 * testing details like the current speed and progress
 * additional information like network type and location (see KPI list below in FAQ)
-* included high-capacity servers provided and maintained by [Speedchecker](https://www.speedchecker.com) or custom servers
-* detailed statistics and reports by Speedchecker
+* included high-capacity servers provided and maintained by [SpeedChecker](https://www.speedchecker.com) or custom servers
+* detailed statistics and reports by SpeedChecker
 
 ## Platform Support
 
@@ -31,6 +30,11 @@ SpeedChecker plugin allows developers to integrate speed test features into thei
     * iOS:
         * Xcode 13.3.1 or later
         * Development Target 11.0 or later
+
+## Permission requirements
+
+Free version of the plugin requires location permission to be able to perform a speed test. You need to handle location permission in your app level.
+Check out our [location policy](https://github.com/speedchecker/react_plugin/wiki/Privacy-&-consent)
 
 ## Table of contents:
 * [Installing](#installing)
@@ -166,3 +170,69 @@ To uninstall the plugin, run the following commands
 npx react-native unlink @speedchecker/react-native-plugin
 npm uninstall @speedchecker/react-native-plugin --save
 ```
+
+## Demo application
+
+Please check our [demo application](https://github.com/speedchecker/react_plugin) in Flutter which includes speed test functionality as well as
+speedometer UI.
+
+## License
+
+SpeedChecker is offering different types of licenses:
+
+| Items                             | Free                          | Basic                                             | Advanced                                                          |
+| --------------------------------- | ----------------------------- | ------------------------------------------------- | ----------------------------------------------------------------- |
+| Speed Test Metrics                | Download / Upload / Latency   | Download / Upload / Latency / Jitter              | Download / Upload / Latency / Jitter                              |
+| Accompanying Metrics              | Device / Network KPIs         | Device / Network KPIs                             | Device / Network KPIs / Advanced Cellular KPIs                    |
+| Test Customization                | -                             | test duration, multi-threading, warm-up phase etc | test duration, multi-threading, warm-up phase etc                 |
+| Location Permission               | Required location permissions | -                                                 | -                                                                 |
+| Data Sharing Requirement          | Required data sharing         | -                                                 | -                                                                 |
+| Measurement Servers               | -                             | Custom measurement servers                        | Custom measurement servers                                        |
+| Background and passive collection | -                             | -                                                 | Background and Passive data collection                            |
+| Cost                              | **FREE**                      | 1,200 EUR per app per year                        | Cost: [**Enquire**](https://www.speedchecker.com/contact-us.html) |
+
+## FAQ
+
+### **Is the SDK free to use?**
+
+Yes! But the SDK collects data on network performance from your app and shares it with SpeedChecker and our clients. The free SDK version requires and
+enabled location. Those restrictions are not in the Basic and Advanced versions
+
+### **Do you have also native SDKs?**
+
+Yes, we have both [Android](https://github.com/speedchecker/speedchecker-sdk-android) and [iOS](https://github.com/speedchecker/speedchecker-sdk-ios)
+SDKs.
+
+### **Do you provide other types of tests?**
+
+Yes! YouTube video streaming, Voice over IP and other tests are supported by our native SDK libraries. Check out our [Android](https://github.com/speedchecker/speedchecker-sdk-android/wiki/API-documentation) and [iOS](https://github.com/speedchecker/speedchecker-sdk-ios/wiki/API-documentation) API documentation
+
+### **Do you provide free support?**
+
+No, we provide support only on Basic and Advanced plans
+
+### **What are all the metrics or KPIs that you can get using our native SDKs?**
+
+The free version of our plugin allows getting basic metrics which are described in
+this [API documentation](https://github.com/speedchecker/react_plugin/wiki/API-documentation)
+
+[Full list of our KPIs for Basic and Advanced versions](https://docs.speedchecker.com/measurement-methodology-links/u21ongNGAYLb6eo7cqjY/kpis-and-measurements/list-of-kpis)
+
+### **Do you host all infrastructure for the test?**
+
+Yes, you do not need to run any servers. We provide and maintain a network of high-quality servers and CDNs to ensure the testing is accurate. If you
+wish to configure your own server, this is possible on Basic and Advanced plans.
+
+### **How do you measure the speed?**
+
+See
+our [measurement methodology](https://docs.speedchecker.com/measurement-methodology-links/u21ongNGAYLb6eo7cqjY/kpis-and-measurements/data-collection-methodologies)
+
+## What's next?
+
+Please contact us for more details and license requirements.
+
+* [More information about SpeedChecker SDKs](https://www.speedchecker.com/speed-test-tools/mobile-apps-and-sdks.html)
+* [API documentation](https://github.com/speedchecker/react_plugin/wiki/API-documentation)
+* [Buy license](https://www.speedchecker.com/contact-us.html)
+* [Contact us](https://www.speedchecker.com/contact-us.html)
