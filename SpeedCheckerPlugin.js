@@ -28,11 +28,9 @@ const SpeedChecker = {
       server: server || '',
       connectionType: connectionType || '',
     };
-
     event(newEvent);
   });
 },
-
   removeTestStartedListener: () => {
     DeviceEventEmitter.removeAllListeners('onTestStarted');
   }
