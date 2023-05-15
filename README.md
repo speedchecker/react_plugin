@@ -60,7 +60,7 @@ npm i @speedchecker/react-native-plugin -- save
 
 ### 4. Link the plugin to your React Native project
 ````
-npx react-native link @speedchecker/react-native-plugin
+npm link @speedchecker/react-native-plugin
 ````
 
 ### 5. Run the project
@@ -70,111 +70,71 @@ react-native run-ios
 ```
 
 ## How to use
-Use the following (sample) functions in index.js:
 
-### To start speed test by event (e.g. button click):
-Plugin includes "startTest" function, which has following signature:
+#### 1. Import SpeedCheckerPlugin in your App.tsx file.
 ````
-startTest = function (
-    onFinished,
-    onError,
-    onReceivedServers = function (obj) { },
-    onSelectedServer = function (obj) { },
-    onDownloadStarted = function () { },
-    onDownloadProgress = function (obj) { },
-    onDownloadFinished = function () { },
-    onUploadStarted = function () { },
-    onUploadProgress = function (obj) { },
-    onUploadFinished = function () { },
-) {...}
-````
-You need to implement these functions in index.js, similar to this sample function:
-````
-function startSpeedTest() {
-    SpeedCheckerPlugin.startTest(
-        function(obj) { //onFinished
-            console.log(JSON.stringify(obj));
-            document.getElementById("testStatusInfo").innerHTML ='Test finished <br>Ping: ' + obj.ping + 'ms' + '<br>download speed: ' + obj.downloadSpeed.toFixed(2) + 'Mbps' + '<br>upload speed: ' + obj.uploadSpeed.toFixed(2) + 'Mbps';
-        },
-        function(err) { //onError
-            console.log(err);
-			document.getElementById("testStatusInfo").innerHTML ='error code: ' + err.code;
-        },
-        function(obj) { //onReceivedServers
-            console.log(JSON.stringify(obj));
-			document.getElementById("testStatusInfo").innerHTML ='Received servers';
-        },
-        function(obj) { //onSelectedServer
-            console.log(JSON.stringify(obj));
-			document.getElementById("testStatusInfo").innerHTML ='Selected server';
-        },
-        function() { //onDownloadStarted
-            console.log('Download started');
-			document.getElementById("testStatusInfo").innerHTML ='Download started';
-        },
-        function(obj) { //onDownloadProgress
-            console.log(JSON.stringify(obj));
-			document.getElementById("testStatusInfo").innerHTML ='Download progress: ' + obj.progress + '<br>speed: ' + obj.downloadSpeed.toFixed(2) + 'Mbps';
-        },
-        function() { //onDownloadFinished
-            console.log('Download finished');
-			document.getElementById("testStatusInfo").innerHTML ='Download finished';
-        },
-        function() { //onUploadStarted
-            console.log('Upload started');
-			document.getElementById("testStatusInfo").innerHTML ='Upload started';
-        },
-        function(obj) { //onUploadProgress
-            console.log(JSON.stringify(obj));
-			document.getElementById("testStatusInfo").innerHTML ='Upload progress: ' + obj.progress + '<br>speed: ' + obj.uploadSpeed.toFixed(2) + 'Mbps';
-        },
-        function() { //onUploadFinished
-            console.log('Upload finished');
-            document.getElementById("testStatusInfo").innerHTML ='Upload finished';
-        }
-    )
-}
-````
-### To enable/disable background network test:
-````
-function setBackgroundNetworkTesting(isEnabled) {
-    SpeedCheckerPlugin.setBackgroundNetworkTesting(
-        isEnabled,
-        function(err) {
-            console.log(err);
-        }
-    )
-}
+import SpeedCheckerPlugin from '@speedchecker/react-native-plugin';
 ````
 
-### To receive background network test status:
+#### 2. Listen events from SpeedCheckerPlugin and all variables you need to store speed test results
 ````
-function setBackgroundNetworkTesting(isEnabled) {
-  SpeedCheckerPlugin.setBackgroundNetworkTesting(
-    function(result) {
-      console.log('Background tests enabled: ' + status);
-      document.getElementById("backgroundTestInfo").innerHTML = status;
-    },
-    function(error) {
-      console.error('Error: ' + error);
-    },
-    isEnabled
-  );
-}
+const [status, setStatus] = useState('');
+  const [ping, setPing] = useState('');
+  const [currentSpeed, setCurrentSpeed] = useState('');
+  const [download, setDownload] = useState('');
+  const [upload, setUpload] = useState('');
+  const [server, setServer] = useState('');
+  const [connectionType, setConnectionType] = useState('');
+
+  useEffect(() => {
+    return () => {
+      SpeedCheckerPlugin.removeTestStartedListener();
+    };
+  }, []);
 ````
 
+### 3. To start speed test by event (e.g. button click), you need to import the plugin and add "startTest" method to your App.tsx file:
+````
+const startTest = () => {
+    SpeedCheckerPlugin.addTestStartedListener((event: {
+      status: React.SetStateAction<string>;
+      ping: React.SetStateAction<string>;
+      currentSpeed: React.SetStateAction<string>;
+      downloadSpeed: React.SetStateAction<string>;
+      uploadSpeed: React.SetStateAction<string>;
+      server: React.SetStateAction<string>;
+      connectionType: React.SetStateAction<string>;
+     }) => {
+      setStatus(event.status || '');
+      setPing(event.ping);
+      setCurrentSpeed(event.currentSpeed);
+      setDownload(event.downloadSpeed);
+      setUpload(event.uploadSpeed);
+      setServer(event.server);
+      setConnectionType(event.connectionType);
+    });
+    SpeedCheckerPlugin.startTest();
+  };
+````
+### 4. To stop speed test, add "stopTest" method to your App.tsx file:
+````
+ const stopTest = () => {
+    SpeedCheckerPlugin.stopTest();
+    setStatus('Speed Test stopped');
+    SpeedCheckerPlugin.removeTestStartedListener();
+  };
+````
 
 ## Uninstalling
 To uninstall the plugin, run the following commands
 ```
-npx react-native unlink @speedchecker/react-native-plugin
+npm unlink @speedchecker/react-native-plugin
 npm uninstall @speedchecker/react-native-plugin --save
 ```
 
 ## Demo application
 
-Please check our [demo application](https://github.com/speedchecker/react_plugin) in Flutter which includes speed test functionality as well as
-speedometer UI.
+Please check our [demo application](https://github.com/speedchecker/react_plugin) in React Native which includes basic speed test functionality.
 
 ## License
 
@@ -225,8 +185,7 @@ wish to configure your own server, this is possible on Basic and Advanced plans.
 
 ### **How do you measure the speed?**
 
-See
-our [measurement methodology](https://docs.speedchecker.com/measurement-methodology-links/u21ongNGAYLb6eo7cqjY/kpis-and-measurements/data-collection-methodologies)
+See our [measurement methodology](https://docs.speedchecker.com/measurement-methodology-links/u21ongNGAYLb6eo7cqjY/kpis-and-measurements/data-collection-methodologies)
 
 ## What's next?
 
