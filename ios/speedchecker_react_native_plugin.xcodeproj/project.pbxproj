@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* speedchecker_react_native_pluginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* speedchecker_react_native_pluginTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-speedchecker_react_native_plugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-speedchecker_react_native_plugin.a */; };
+		0655798928203B31245B8DF0 /* libPods-speedchecker_react_native_plugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CC8AB1828BCDAEE99B57A1 /* libPods-speedchecker_react_native_plugin.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		941B72F351264234EB2D69EF /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB719617D6CF119746E2CB3A /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */; };
+		A6E0CE9B2A8D3EBA00671911 /* SpeedCheckerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E0CE9A2A8D3EBA00671911 /* SpeedCheckerPlugin.swift */; };
+		A6E0CE9D2A8D3FFD00671911 /* SpeedCheckerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E0CE9C2A8D3FFD00671911 /* SpeedCheckerPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,20 +32,23 @@
 		00E356EE1AD99517003FC87E /* speedchecker_react_native_pluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = speedchecker_react_native_pluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* speedchecker_react_native_pluginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = speedchecker_react_native_pluginTests.m; sourceTree = "<group>"; };
+		09CC8AB1828BCDAEE99B57A1 /* libPods-speedchecker_react_native_plugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-speedchecker_react_native_plugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* speedchecker_react_native_plugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = speedchecker_react_native_plugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = speedchecker_react_native_plugin/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = speedchecker_react_native_plugin/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = speedchecker_react_native_plugin/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = speedchecker_react_native_plugin/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = speedchecker_react_native_plugin/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-speedchecker_react_native_plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin.debug.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-speedchecker_react_native_plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin.release.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-speedchecker_react_native_plugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-speedchecker_react_native_plugin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C0D63F26E57304E4F19CC0A /* Pods-speedchecker_react_native_plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin.debug.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin.debug.xcconfig"; sourceTree = "<group>"; };
+		4C5EB392E1D86D329873CBC0 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = speedchecker_react_native_plugin/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig"; sourceTree = "<group>"; };
+		A1C1EA5EFBD11C64C674FAC1 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig"; sourceTree = "<group>"; };
+		A6E0CE992A8D3EBA00671911 /* speedchecker_react_native_plugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "speedchecker_react_native_plugin-Bridging-Header.h"; sourceTree = "<group>"; };
+		A6E0CE9A2A8D3EBA00671911 /* SpeedCheckerPlugin.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SpeedCheckerPlugin.swift; sourceTree = "<group>"; tabWidth = 4; };
+		A6E0CE9C2A8D3FFD00671911 /* SpeedCheckerPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedCheckerPlugin.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		FB719617D6CF119746E2CB3A /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE653CBFCD4C1C500B1A1493 /* Pods-speedchecker_react_native_plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-speedchecker_react_native_plugin.release.xcconfig"; path = "Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a in Frameworks */,
+				941B72F351264234EB2D69EF /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-speedchecker_react_native_plugin.a in Frameworks */,
+				0655798928203B31245B8DF0 /* libPods-speedchecker_react_native_plugin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +97,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				A6E0CE9A2A8D3EBA00671911 /* SpeedCheckerPlugin.swift */,
+				A6E0CE9C2A8D3FFD00671911 /* SpeedCheckerPlugin.m */,
+				A6E0CE992A8D3EBA00671911 /* speedchecker_react_native_plugin-Bridging-Header.h */,
 			);
 			name = speedchecker_react_native_plugin;
 			sourceTree = "<group>";
@@ -100,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-speedchecker_react_native_plugin.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */,
+				09CC8AB1828BCDAEE99B57A1 /* libPods-speedchecker_react_native_plugin.a */,
+				FB719617D6CF119746E2CB3A /* libPods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +148,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-speedchecker_react_native_plugin.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-speedchecker_react_native_plugin.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */,
+				2C0D63F26E57304E4F19CC0A /* Pods-speedchecker_react_native_plugin.debug.xcconfig */,
+				FE653CBFCD4C1C500B1A1493 /* Pods-speedchecker_react_native_plugin.release.xcconfig */,
+				4C5EB392E1D86D329873CBC0 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */,
+				A1C1EA5EFBD11C64C674FAC1 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "speedchecker_react_native_pluginTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				AC1B5DE7FD94F3F446252889 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				1A3208D95E572ACE420AEECA /* [CP] Embed Pods Frameworks */,
+				E57F26A4C491888F679D66C4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +184,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "speedchecker_react_native_plugin" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				6FAAABF1CC73B7C76C3C4444 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				E86AFBFBA2031F1EC451AC0B /* [CP] Embed Pods Frameworks */,
+				273D8CE62836302C4104D0F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +215,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -266,46 +274,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		1A3208D95E572ACE420AEECA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		273D8CE62836302C4104D0F7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		6FAAABF1CC73B7C76C3C4444 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -327,41 +330,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		AC1B5DE7FD94F3F446252889 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		E57F26A4C491888F679D66C4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,6 +367,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests/Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E86AFBFBA2031F1EC451AC0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-speedchecker_react_native_plugin/Pods-speedchecker_react_native_plugin-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -412,6 +420,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E0CE9D2A8D3FFD00671911 /* SpeedCheckerPlugin.m in Sources */,
+				A6E0CE9B2A8D3EBA00671911 /* SpeedCheckerPlugin.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -430,8 +440,9 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */;
+			baseConfigurationReference = 4C5EB392E1D86D329873CBC0 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -457,8 +468,9 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */;
+			baseConfigurationReference = A1C1EA5EFBD11C64C674FAC1 /* Pods-speedchecker_react_native_plugin-speedchecker_react_native_pluginTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = speedchecker_react_native_pluginTests/Info.plist;
@@ -481,7 +493,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-speedchecker_react_native_plugin.debug.xcconfig */;
+			baseConfigurationReference = 2C0D63F26E57304E4F19CC0A /* Pods-speedchecker_react_native_plugin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -500,6 +512,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = speedchecker_react_native_plugin;
+				SWIFT_OBJC_BRIDGING_HEADER = "speedchecker_react_native_plugin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -508,7 +521,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-speedchecker_react_native_plugin.release.xcconfig */;
+			baseConfigurationReference = FE653CBFCD4C1C500B1A1493 /* Pods-speedchecker_react_native_plugin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -526,6 +539,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = speedchecker_react_native_plugin;
+				SWIFT_OBJC_BRIDGING_HEADER = "speedchecker_react_native_plugin-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -564,7 +578,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -592,12 +606,14 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -635,7 +651,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -655,12 +671,14 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

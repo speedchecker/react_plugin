@@ -19,12 +19,12 @@
   "license": "BSD 3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/speedchecker/react_plugin/blob/main/LICENSE"
+    "url": "https://github.com/speedchecker/react_plugin.git"
   },
   "homepage": "https://github.com/speedchecker/react_plugin#readme",
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.71.6"
+    "react-native": "^0.72.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

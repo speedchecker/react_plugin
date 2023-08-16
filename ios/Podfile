@@ -43,6 +43,8 @@ target 'speedchecker_react_native_plugin' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'SpeedcheckerSDK', '1.5.66'
+
   target 'speedchecker_react_native_pluginTests' do
     inherit! :complete
     # Pods for testing
