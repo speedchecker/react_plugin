@@ -1,6 +1,7 @@
 {
   "name": "@speedchecker/react-native-plugin",
   "version": "1.0.0",
+  "main": "SpeedCheckerPlugin.js",
   "description": "React Native plugin for Speedchecker SDK",
   "scripts": {
     "android": "react-native run-android",
