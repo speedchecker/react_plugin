@@ -11,7 +11,7 @@ import React
 import CoreLocation
 
 @objc(SpeedCheckerPlugin)
-class SpeedCheckerPlugin: RCTEventEmitter {
+public class SpeedCheckerPlugin: RCTEventEmitter {
     private var locationManager = CLLocationManager()
     private var internetSpeedTest: InternetSpeedTest?
     
@@ -26,30 +26,30 @@ class SpeedCheckerPlugin: RCTEventEmitter {
     }
     
     // MARK: - RCTEventEmitter supported events
-    override func supportedEvents() -> [String]! {
+    public override func supportedEvents() -> [String]! {
         return Event.allCases.compactMap({ $0.rawValue })
     }
     
     // MARK: - Queue
-    override class func requiresMainQueueSetup() -> Bool {
+    public override class func requiresMainQueueSetup() -> Bool {
         return true
     }
     
     // MARK: - Available methods
     
     @objc
-    func startTest() {
+    public func startTest() {
         resetServer()
         checkPermissionsAndStartTest()
     }
     
     @objc
-    func startTestWithTestType(_ testType: Int) {
+    public func startTestWithTestType(_ testType: Int) {
         startTest()
     }
     
     @objc
-    func startTestWithCustomServer(_ dict: [String: Any]) {
+    public func startTestWithCustomServer(_ dict: [String: Any]) {
         let server = SpeedTestServer(
             ID: dict["id"] as? Int,
             scheme: "https",
@@ -66,7 +66,7 @@ class SpeedCheckerPlugin: RCTEventEmitter {
     }
     
     @objc
-    func stopTest() {
+    public func stopTest() {
         internetSpeedTest?.forceFinish({ _ in
         })
     }
@@ -148,12 +148,12 @@ class SpeedCheckerPlugin: RCTEventEmitter {
 }
 
 extension SpeedCheckerPlugin: InternetSpeedTestDelegate {
-    func internetTestError(error: SpeedcheckerSDK.SpeedTestError) {
+    public func internetTestError(error: SpeedcheckerSDK.SpeedTestError) {
         sendErrorResult(error)
         resetServer()
     }
     
-    func internetTestFinish(result: SpeedcheckerSDK.SpeedTestResult) {
+    public func internetTestFinish(result: SpeedcheckerSDK.SpeedTestResult) {
         print(result.downloadSpeed.mbps)
         print(result.uploadSpeed.mbps)
         print(result.latencyInMs)
@@ -172,12 +172,12 @@ extension SpeedCheckerPlugin: InternetSpeedTestDelegate {
         resetServer()
     }
     
-    func internetTestReceived(servers: [SpeedcheckerSDK.SpeedTestServer]) {
+    public func internetTestReceived(servers: [SpeedcheckerSDK.SpeedTestServer]) {
         resultDict["status"] = "Ping"
         sendResultDict()
     }
     
-    func internetTestSelected(server: SpeedcheckerSDK.SpeedTestServer, latency: Int, jitter: Int) {
+    public func internetTestSelected(server: SpeedcheckerSDK.SpeedTestServer, latency: Int, jitter: Int) {
         print("Latency: \(latency)")
         print("Jitter: \(jitter)")
         resultDict["ping"] = latency
@@ -186,15 +186,15 @@ extension SpeedCheckerPlugin: InternetSpeedTestDelegate {
         sendResultDict()
     }
     
-    func internetTestDownloadStart() {
+    public func internetTestDownloadStart() {
         resultDict["status"] = "Download Test"
         sendResultDict()
     }
     
-    func internetTestDownloadFinish() {
+    public func internetTestDownloadFinish() {
     }
     
-    func internetTestDownload(progress: Double, speed: SpeedcheckerSDK.SpeedTestSpeed) {
+    public func internetTestDownload(progress: Double, speed: SpeedcheckerSDK.SpeedTestSpeed) {
         print("Download: \(speed.descriptionInMbps)")
         resultDict["status"] = "Download Test"
         resultDict["percent"] = Int(progress * 100)
@@ -203,17 +203,17 @@ extension SpeedCheckerPlugin: InternetSpeedTestDelegate {
         sendResultDict()
     }
     
-    func internetTestUploadStart() {
+    public func internetTestUploadStart() {
         resultDict["status"] = "Upload Test"
         resultDict["currentSpeed"] = 0
         resultDict["percent"] = 0
         sendResultDict()
     }
     
-    func internetTestUploadFinish() {
+    public func internetTestUploadFinish() {
     }
     
-    func internetTestUpload(progress: Double, speed: SpeedcheckerSDK.SpeedTestSpeed) {
+    public func internetTestUpload(progress: Double, speed: SpeedcheckerSDK.SpeedTestSpeed) {
         print("Upload: \(speed.descriptionInMbps)")
         resultDict["percent"] = Int(progress * 100)
         resultDict["currentSpeed"] = speed.mbps
