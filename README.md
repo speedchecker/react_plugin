@@ -195,3 +195,4 @@ Please contact us for more details and license requirements.
 * [API documentation](https://github.com/speedchecker/react_plugin/wiki/API-documentation)
 * [Buy license](https://www.speedchecker.com/contact-us.html)
 * [Contact us](https://www.speedchecker.com/contact-us.html)
+
