@@ -35,8 +35,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +49,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to provide accurate speeds by using your nearest server.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>The app will run network tests in the background that may consume data from your mobile data plan. This anonymized data helps Internet providers to perform quality research and improve Internet infrastructure in your area.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The app will run network tests in the background that may consume data from your mobile data plan. This anonymized data helps Internet providers to perform quality research and improve Internet infrastructure in your area.</string>
 </dict>
 </plist>
