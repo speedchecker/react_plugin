@@ -6,6 +6,10 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8E79F52D54F43CBCDA74CEF1 /* Pods_SpeedCheckerPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5AC21BE13EA1281B5711B4 /* Pods_SpeedCheckerPlugin.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libSpeedCheckerPlugin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSpeedCheckerPlugin.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C5AC21BE13EA1281B5711B4 /* Pods_SpeedCheckerPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeedCheckerPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		723EBA52D0740F75AABA5045 /* Pods-SpeedCheckerPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedCheckerPlugin.release.xcconfig"; path = "Target Support Files/Pods-SpeedCheckerPlugin/Pods-SpeedCheckerPlugin.release.xcconfig"; sourceTree = "<group>"; };
+		A7F8D9A3421DF06C49710165 /* Pods-SpeedCheckerPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeedCheckerPlugin.debug.xcconfig"; path = "Target Support Files/Pods-SpeedCheckerPlugin/Pods-SpeedCheckerPlugin.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E79F52D54F43CBCDA74CEF1 /* Pods_SpeedCheckerPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,11 +49,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		2D3EDC2DAD48519479024683 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7F8D9A3421DF06C49710165 /* Pods-SpeedCheckerPlugin.debug.xcconfig */,
+				723EBA52D0740F75AABA5045 /* Pods-SpeedCheckerPlugin.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
 				134814211AA4EA7D00B7C361 /* Products */,
+				2D3EDC2DAD48519479024683 /* Pods */,
+				AD977637CE4F06C24872BA83 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		AD977637CE4F06C24872BA83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C5AC21BE13EA1281B5711B4 /* Pods_SpeedCheckerPlugin.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,6 +83,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "SpeedCheckerPlugin" */;
 			buildPhases = (
+				1A2B50FCBC3082F45D02E374 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -99,6 +128,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A2B50FCBC3082F45D02E374 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpeedCheckerPlugin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -224,6 +278,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7F8D9A3421DF06C49710165 /* Pods-SpeedCheckerPlugin.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -240,6 +295,7 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 723EBA52D0740F75AABA5045 /* Pods-SpeedCheckerPlugin.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -2,13 +2,13 @@
   "name": "@speedchecker/react-native-plugin",
   "version": "1.0.0",
   "description": "React Native plugin for Speedchecker SDK",
+  "private": false,
   "main": "index.js",
   "files": [
     "README.md",
     "android",
     "index.js",
-    "ios",
-    "react-native-plugin.podspec"
+    "ios"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
