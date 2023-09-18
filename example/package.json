@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@speedchecker/react-native-plugin": "link:../",
+    "@speedchecker/react-native-plugin": "file:./",
     "react": "18.2.0",
     "react-native": "0.72.4"
   },

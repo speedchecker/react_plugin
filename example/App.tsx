@@ -8,7 +8,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, EmitterSubscription } from 'react-native';
 
-import SpeedChecker from '@speedchecker/react-native-plugin';
+import SpeedChecker from '../SpeedCheckerPlugin';
 
 const App = () => {
 

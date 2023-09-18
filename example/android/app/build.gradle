@@ -73,7 +73,7 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.example"
+    namespace "com.speedchecker.reactnative"
     defaultConfig {
         applicationId "com.example"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -91,6 +91,7 @@ android {
     }
     buildTypes {
         debug {
+            buildConfigField "boolean", "DEBUG", "true"
             signingConfig signingConfigs.debug
         }
         release {
@@ -99,6 +100,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            buildConfigField "boolean", "DEBUG", "false"
         }
     }
 }
