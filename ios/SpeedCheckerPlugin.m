@@ -44,6 +44,11 @@ RCT_EXPORT_METHOD(startTest) {
     [self checkPermissionsAndStartTest];
 }
 
+RCT_EXPORT_METHOD(startTestWithCustomServer:(NSDictionary*)serverInfo) {
+    self.server = [self speedTestServerFromDict:serverInfo];
+    [self checkPermissionsAndStartTest];
+}
+
 RCT_EXPORT_METHOD(stopTest) {
     [self.internetTest forceFinish:^(enum SpeedTestError error) {
     }];
@@ -80,7 +85,9 @@ RCT_EXPORT_METHOD(stopTest) {
 
 - (void)startSpeedTest {
     self.internetTest = [[InternetSpeedTest alloc] initWithClientID:0 userID:0 isBackground:NO delegate:self];
-    [self.internetTest start:^(enum SpeedTestError error) {
+    
+    typedef void (^SpeedTestCompletionHandler)(enum SpeedTestError error);
+    SpeedTestCompletionHandler completionHandler = ^(enum SpeedTestError error) {
         if (error != SpeedTestErrorOk) {
             [self sendErrorResult:error];
             [self resetServer];
@@ -102,7 +109,13 @@ RCT_EXPORT_METHOD(stopTest) {
             } mutableCopy];
             [self sendResultDict];
         }
-    }];
+    };
+    
+    if (self.server && ![self isStringNilOrEmpty:self.server.domain]) {
+        [self.internetTest start:@[self.server] completion:completionHandler];
+    } else {
+        [self.internetTest start:completionHandler];
+    }
 }
 
 - (void)requestLocation {
@@ -150,12 +163,45 @@ RCT_EXPORT_METHOD(stopTest) {
     return serverInfo;
 }
 
+- (SpeedTestServer*)speedTestServerFromDict:(NSDictionary*)serverInfo {
+    if (!serverInfo) {
+        return nil;
+    }
+    
+    NSNumber *serverID = [self objectOrNilForKey:@"id" ofClass:[NSNumber class] fromDictionary:serverInfo];
+    NSString *domain = [self objectOrNilForKey:@"domain" ofClass:[NSString class] fromDictionary:serverInfo];
+    NSString *downloadFolderPath = [[self objectOrNilForKey:@"downloadFolderPath" ofClass:[NSString class] fromDictionary:serverInfo] stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    NSString *uploadFolderPath = [[self objectOrNilForKey:@"uploadFolderPath" ofClass:[NSString class] fromDictionary:serverInfo] stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    NSString *countryCode = [self objectOrNilForKey:@"countryCode" ofClass:[NSString self] fromDictionary:serverInfo];
+    NSString *cityName = [self objectOrNilForKey:@"city" ofClass:[NSString class] fromDictionary:serverInfo];
+    
+    SpeedTestServer *server = [[SpeedTestServer alloc] initWithID:serverID
+                                                             type:SCServerTypeSpeedchecker
+                                                           scheme:@"https"
+                                                           domain:domain
+                                                             port:nil
+                                               downloadFolderPath:downloadFolderPath
+                                                 uploadFolderPath:uploadFolderPath
+                                                     uploadScript:@"php"
+                                                      countryCode:countryCode
+                                                         cityName:cityName];
+    return server;
+}
+
 - (id)objectOrNull:(id)object {
   return object ?: [NSNull null];
 }
 
-- (id)objectOrNil:(id)object {
-    return [object isEqual:[NSNull null]] ? nil : object;
+- (id)objectOrNilForKey:(id)key ofClass:(Class)class fromDictionary:(NSDictionary *)dict {
+    id object = [dict objectForKey:key];
+    if (![object isEqual:[NSNull null]] && [object isKindOfClass:class]) {
+        return object;
+    }
+    return nil;
+}
+
+- (BOOL)isStringNilOrEmpty:(NSString *)string {
+    return !string || [string isEqualToString:@""] || string.length == 0;
 }
 
 #pragma mark - InternetSpeedTestDelegate
