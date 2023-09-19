@@ -21,7 +21,7 @@ const SpeedChecker = {
     },
     addTestStartedListener: (event) => {
         const subscription = speedcheckerEvents.addListener('onTestStarted', (eventData) => {
-            const { status, ping, currentSpeed, downloadSpeed, uploadSpeed, server, connectionType } = eventData;
+            const { status, ping, currentSpeed, downloadSpeed, uploadSpeed, server, connectionType, error } = eventData;
       
             const newEvent = {
                 status: status || '',
@@ -31,6 +31,7 @@ const SpeedChecker = {
                 uploadSpeed: uploadSpeed !== undefined ? uploadSpeed + ' Mbps' : '',
                 server: server || '',
                 connectionType: connectionType || '',
+                error: error
             };
             event(newEvent);
         });

@@ -37,7 +37,8 @@ const App = () => {
       uploadSpeed: React.SetStateAction<string>;
       server: React.SetStateAction<string>;
       connectionType: React.SetStateAction<string>;
-     }) => {
+      error: React.SetStateAction<string>;
+     }) => {      
       setStatus(event.status || '');
       setPing(event.ping);
       setcurrentSpeed(event.currentSpeed);
