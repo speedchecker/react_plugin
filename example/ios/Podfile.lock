@@ -377,7 +377,7 @@ PODS:
     - glog
   - react-native-plugin (1.0.0):
     - React
-    - SpeedcheckerSDK (= 1.8.12)
+    - SpeedcheckerSDK (= 2.0.2)
   - React-NativeModulesApple (0.72.4):
     - hermes-engine
     - React-callinvoker
@@ -489,7 +489,7 @@ PODS:
     - React-logger (= 0.72.4)
     - React-perflogger (= 0.72.4)
   - SocketRocket (0.6.1)
-  - SpeedcheckerSDK (1.8.12)
+  - SpeedcheckerSDK (2.0.2)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -695,7 +695,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: c7f826e40fa9cab5d37cab6130b1af237332b594
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
   React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-plugin: 775e57fd1e83891c406a856a3a4369de045607c9
+  react-native-plugin: 67f944ebcc63fd116dda5be9e08139f02aa12587
   React-NativeModulesApple: edb5ace14f73f4969df6e7b1f3e41bef0012740f
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
   React-RCTActionSheet: 02904b932b50e680f4e26e7a686b33ebf7ef3c00
@@ -714,7 +714,7 @@ SPEC CHECKSUMS:
   React-utils: b79f2411931f9d3ea5781404dcbb2fa8a837e13a
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
-  SpeedcheckerSDK: 626fe4b9d00c8a0e3ff53cc71061400fbc3e356c
+  SpeedcheckerSDK: f4ce6ce969acedf85652d1a615109ec527ed7406
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

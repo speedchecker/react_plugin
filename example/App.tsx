@@ -19,6 +19,7 @@ const App = () => {
   const [upload, setUpload] = useState('');
   const [server, setServer] = useState('');
   const [connectionType, setConnectionType] = useState('');
+  const [error, setError] = useState('');
 
   let testStartedSubscription: EmitterSubscription;
 
@@ -46,19 +47,22 @@ const App = () => {
       setUpload(event.uploadSpeed);
       setServer(event.server);
       setConnectionType(event.connectionType);
+      setError(event.error);
     });
     SpeedChecker.startTest();
   };
 
   const stopTest = () => {
     SpeedChecker.stopTest();
+    setError('');
     setStatus('Speed Test stopped');
     SpeedChecker.removeTestStartedListener(testStartedSubscription);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.statusText}>{status}</Text>
+      {!error && <Text style={styles.statusText}>{status}</Text>}
+      {error && <Text style={styles.statusText}>Error: {error}</Text>}
       <Text style={styles.resultText}>Ping: {ping}</Text>
       <Text style={styles.resultText}>Current speed: {currentSpeed}</Text>
       <Text style={styles.resultText}>Download speed: {download}</Text>

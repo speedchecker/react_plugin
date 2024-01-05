@@ -10,6 +10,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) SpeedTestServer *server;
 @property (nonatomic, strong) NSMutableDictionary *resultDict;
+@property (nonatomic, strong) NSString* licenseKey;
 @end
 
 @implementation SpeedCheckerPlugin
@@ -41,12 +42,12 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(startTest) {
     [self resetServer];
-    [self checkPermissionsAndStartTest];
+    [self startSpeedTest];
 }
 
 RCT_EXPORT_METHOD(startTestWithCustomServer:(NSDictionary*)serverInfo) {
     self.server = [self speedTestServerFromDict:serverInfo];
-    [self checkPermissionsAndStartTest];
+    [self startSpeedTest];
 }
 
 RCT_EXPORT_METHOD(stopTest) {
@@ -71,20 +72,8 @@ RCT_EXPORT_METHOD(stopTest) {
     self.server = nil;
 }
 
-- (void)checkPermissionsAndStartTest {
-    SCLocationHelper *locationHelper = [[SCLocationHelper alloc] init];
-    [locationHelper locationServicesEnabled:^(BOOL locationEnabled) {
-        if (!locationEnabled) {
-            [self sendErrorResult:SpeedTestErrorLocationUndefined];
-            return;
-        }
-
-        [self startSpeedTest];
-    }];
-}
-
 - (void)startSpeedTest {
-    self.internetTest = [[InternetSpeedTest alloc] initWithClientID:0 userID:0 isBackground:NO delegate:self];
+    self.internetTest = [[InternetSpeedTest alloc] initWithLicenseKey:self.licenseKey delegate:self];
     
     typedef void (^SpeedTestCompletionHandler)(enum SpeedTestError error);
     SpeedTestCompletionHandler completionHandler = ^(enum SpeedTestError error) {
@@ -113,6 +102,8 @@ RCT_EXPORT_METHOD(stopTest) {
     
     if (self.server && ![self isStringNilOrEmpty:self.server.domain]) {
         [self.internetTest start:@[self.server] completion:completionHandler];
+    } else if ([self isStringNilOrEmpty:self.licenseKey]) {
+        [self.internetTest startFreeTest:completionHandler];
     } else {
         [self.internetTest start:completionHandler];
     }
@@ -148,6 +139,10 @@ RCT_EXPORT_METHOD(stopTest) {
             return @"Cancelled";
         case SpeedTestErrorLocationUndefined:
             return @"Location undefined";
+        case SpeedTestErrorAppISPMismatch:
+            return @"App-ISP mismatch";
+        case SpeedTestErrorInvalidlicenseKey:
+            return @"Invalid license key";
         default:
             return @"Unknown";
     }
