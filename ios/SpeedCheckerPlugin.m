@@ -40,6 +40,10 @@
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_METHOD(setLicenseKey:(NSString*)licenseKey) {
+    _licenseKey = licenseKey;
+}
+
 RCT_EXPORT_METHOD(startTest) {
     [self resetServer];
     [self startSpeedTest];

@@ -30,6 +30,7 @@ const App = () => {
   }, []);
 
   const startTest = () => {
+    // SpeedChecker.setIosLicenseKey('Your license key');
     testStartedSubscription = SpeedChecker.addTestStartedListener((event: {
       status: React.SetStateAction<string>;
       ping: React.SetStateAction<string>;

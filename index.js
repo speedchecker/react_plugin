@@ -1,12 +1,22 @@
 // main index.js
 
-import { NativeEventEmitter, NativeModules } from 'react-native';
+import { NativeEventEmitter, NativeModules, Platform } from 'react-native';
 
 const { SpeedCheckerPlugin } = NativeModules;
 
 const speedcheckerEvents = new NativeEventEmitter(SpeedCheckerPlugin);
 
 const SpeedChecker = {
+    setAndroidLicenseKey: (licenseKey) => {
+        if (Platform.OS === 'android') {
+            SpeedCheckerPlugin.setLicenseKey(licenseKey);
+        }
+    },
+    setIosLicenseKey: (licenseKey) => {
+        if (Platform.OS === 'ios') {
+            SpeedCheckerPlugin.setLicenseKey(licenseKey);
+        }
+    },
     startTest: () => {
         SpeedCheckerPlugin.startTest();
     },
