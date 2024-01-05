@@ -21,7 +21,6 @@
     if (self) {
         self.locationManager = [CLLocationManager new];
         self.resultDict = [NSMutableDictionary new];
-        [self requestLocation];
     }
     return self;
 }
