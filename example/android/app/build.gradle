@@ -103,6 +103,16 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url 'https://maven.speedcheckerapi.com/artifactory/libs-release'
+        credentials {
+            username = "speedchecker"
+            password = "AP3Zg8iFoiatscExgkeMHP3ur9EcsNkbxC8e6gXr8QV9PeWtiAVM3pETm8pF"
+        }
+    }
+}
+
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
