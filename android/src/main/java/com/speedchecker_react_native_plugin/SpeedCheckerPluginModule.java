@@ -30,6 +30,7 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
 	DecimalFormat decimalFormat = new DecimalFormat("#.##");
 	private Server server = null;
 	private int speedTestType = 0;
+	private String licenseKey;
 
     private final ReactApplicationContext reactContext;
 
@@ -44,10 +45,14 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
     }
 
     @Override
-	public void initialize() {
-		super.initialize();
-		SpeedcheckerSDK.init(reactContext);
-	}
+    public void initialize() {
+        super.initialize();
+        if (licenseKey != null && !licenseKey.isEmpty()) {
+            SpeedcheckerSDK.init(reactContext, licenseKey);
+        } else {
+            SpeedcheckerSDK.init(reactContext);
+        }
+    }
 
     private void checkPermissions() {
 		if (reactContext != null) {
@@ -86,13 +91,17 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
 	public void startTestWithParams() {
 		if (speedTestType != 0) {
 			SpeedTestOptions options = new SpeedTestOptions();
-//			options.setSpeedTestType(speedTestType);
 			SpeedcheckerSDK.SpeedTest.startTest(reactContext, options);
 		} else if (server != null) {
 			SpeedcheckerSDK.SpeedTest.startTest(reactContext, server);
 		} else {
 			SpeedcheckerSDK.SpeedTest.startTest(reactContext);
 		}
+	}
+
+	@ReactMethod
+	public void setLicenseKey(String licenseKey) {
+		this.licenseKey = licenseKey;
 	}
 
 	@ReactMethod
@@ -116,7 +125,7 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
 			}
 
 			@Override
-			public void onFetchServerFailed() {
+			public void onFetchServerFailed(Integer integer) {
 
 			}
 
@@ -233,7 +242,9 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
 				reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
 			}
 		});
-		checkPermissions();
+		if(licenseKey == null || licenseKey.isEmpty()) {
+			checkPermissions();
+		}
 	}
 
 	@ReactMethod

@@ -26,7 +26,7 @@ SpeedChecker plugin allows developers to integrate speed test features into thei
 * Platform-specific requirements:
     * Android:
         *  minSDK version: 21 or higher
-        *  Location permissions
+        *  Location permissions (for free users)
     * iOS:
         * Xcode 13.3.1 or later
         * Development Target 11.0 or later
@@ -37,11 +37,13 @@ Free version of the plugin requires location permission to be able to perform a 
 Check out our [location policy](https://github.com/speedchecker/react_plugin/wiki/Privacy-&-consent)
 
 ## Table of contents:
-* [Installing](#installing)
+* [Getting started](#getting-started)
 * [How to use](#how-to-use)
 * [Uninstalling](#uninstalling)
 
-## Installing
+## Getting started
+
+>**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ### 1. Create a React Native project
 ```
@@ -63,11 +65,48 @@ npm i @speedchecker/react-native-plugin -- save
 npm link @speedchecker/react-native-plugin
 ````
 
-### 5. Run the project
+### 5. Start the Metro Server
+
+You will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+
+To start Metro, run the following command from the _root_ of your React Native project:
+
+```bash
+# using npm
+npm start
+
+# OR using Yarn
+yarn start
 ```
-react-native run-android
-react-native run-ios
+
+### 6. Start your Application
+
+Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+
+#### For Android
+
+```bash
+# using npm
+npm run android
+
+# OR using Yarn
+yarn android
 ```
+
+#### For iOS
+
+```bash
+# using npm
+npm run ios
+
+# OR using Yarn
+yarn ios
+```
+
+If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+
+This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+
 
 ## How to use
 
@@ -116,6 +155,21 @@ const startTest = () => {
     SpeedCheckerPlugin.startTest();
   };
 ````
+
+### 4. If you are paid user, you should set license key _before_ you start test. Please contact us and we will provide you with licenseKey for your app:
+
+#### For Android
+````
+SpeedCheckerPlugin.setAndroidLicenseKey('Your license key')
+````
+
+#### For iOS
+````
+SpeedCheckerPlugin.setIosLicenseKey('Your license key')
+````
+
+If no license is set, test will be conducted in free mode and, as a result, request a location permission.
+
 ### 4. To stop speed test, add "stopTest" method to your App.tsx file:
 ````
  const stopTest = () => {
@@ -125,12 +179,45 @@ const startTest = () => {
   };
 ````
 
+### 4. Modifying your App
+
+Now that you have successfully run the app, let's modify it.
+
+1. Open `App.tsx` in your text editor of choice and edit some lines.
+2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+
+   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App!
+
+
 ## Uninstalling
 To uninstall the plugin, run the following commands
 ```
 npm unlink @speedchecker/react-native-plugin
 npm uninstall @speedchecker/react-native-plugin --save
 ```
+
+## Now what?
+
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+
+## Troubleshooting
+
+If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+## Learn More
+
+To learn more about React Native, take a look at the following resources:
+
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 
 ## Demo application
 
@@ -195,4 +282,3 @@ Please contact us for more details and license requirements.
 * [API documentation](https://github.com/speedchecker/react_plugin/wiki/API-documentation)
 * [Buy license](https://www.speedchecker.com/contact-us.html)
 * [Contact us](https://www.speedchecker.com/contact-us.html)
-
