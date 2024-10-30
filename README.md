@@ -158,9 +158,14 @@ const startTest = () => {
 
 ### 4. If you are paid user, you should set license key _before_ you start test. Please contact us and we will provide you with licenseKey for your app:
 
-#### For Android
+#### For Android licenseKey should be setup in Application onCreate method in native flutter project code.
 ````
-SpeedCheckerPlugin.setAndroidLicenseKey('Your license key')
+class MainApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        SpeedcheckerSDK.setLicenseKey(this, "Insert your key here")
+    }
+}
 ````
 
 #### For iOS
