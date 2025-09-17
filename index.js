@@ -31,11 +31,15 @@ const SpeedChecker = {
     },
     addTestStartedListener: (event) => {
         const subscription = speedcheckerEvents.addListener('onTestStarted', (eventData) => {
-            const { status, ping, currentSpeed, downloadSpeed, uploadSpeed, server, connectionType, error } = eventData;
+            const { status, ping, jitter, percent, downloadTransferredMb, uploadTransferredMb, currentSpeed, downloadSpeed, uploadSpeed, server, connectionType, error } = eventData;
       
             const newEvent = {
                 status: status || '',
                 ping: ping !== undefined ? ping + ' ms' : '',
+                jitter: jitter !== undefined ? jitter + ' ms' : '',
+                percent: percent || '',
+                downloadTransferredMb: downloadTransferredMb || '',
+                uploadTransferredMb: uploadTransferredMb || '',
                 currentSpeed: currentSpeed !== undefined ? currentSpeed + ' Mbps' : '',
                 downloadSpeed: downloadSpeed !== undefined ? downloadSpeed + ' Mbps' : '',
                 uploadSpeed: uploadSpeed !== undefined ? uploadSpeed + ' Mbps' : '',
