@@ -50,41 +50,6 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
             SpeedcheckerSDK.init(reactContext);
         }
     }
-
-    private void checkPermissions() {
-        if (reactContext != null) {
-            if (Build.VERSION.SDK_INT >= 30) {
-                if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0) {
-                    WritableMap map = new WritableNativeMap();
-                    map.putString("error", "Please grant location permission");
-                    reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-                    Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
-                } else startTestWithParams();
-
-                if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
-                    WritableMap map = new WritableNativeMap();
-                    map.putString("error", "Please grant background location permission");
-                    reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-                    Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
-                } else startTestWithParams();
-
-            } else if (Build.VERSION.SDK_INT == 29) {
-                if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_BACKGROUND_LOCATION") != 0) {
-                    WritableMap map = new WritableNativeMap();
-                    map.putString("error", "Please grant location permission");
-                    reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-                    Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
-                }
-            } else if (ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_COARSE_LOCATION") != 0 || ActivityCompat.checkSelfPermission(reactContext, "android.permission.ACCESS_FINE_LOCATION") != 0) {
-                WritableMap map = new WritableNativeMap();
-                map.putString("error", "Please grant background location permission");
-                reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
-                Toast.makeText(reactContext, "Please grant location permission", Toast.LENGTH_SHORT).show();
-            } else startTestWithParams();
-
-        }
-    }
-
     public void startTestWithParams() {
         if (speedTestType != 0) {
             SpeedTestOptions options = new SpeedTestOptions();
@@ -239,9 +204,7 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
                 reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onTestStarted", map);
             }
         });
-        if(licenseKey == null || licenseKey.isEmpty()) {
-            checkPermissions();
-        }
+        startTestWithParams();
     }
 
     @ReactMethod
