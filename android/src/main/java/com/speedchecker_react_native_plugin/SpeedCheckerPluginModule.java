@@ -234,4 +234,9 @@ public class SpeedCheckerPluginModule extends ReactContextBaseJavaModule {
     public void stopTest() {
         SpeedcheckerSDK.SpeedTest.interruptTest();
     }
+
+    @ReactMethod
+    public void setSpeedTestDebugLogsEnabled(boolean enabled) {
+        // No-op on Android for now. Keep API parity with iOS.
+    }
 }

@@ -29,6 +29,9 @@ const SpeedChecker = {
     stopTest: () => {
         SpeedCheckerPlugin.stopTest();
     },
+    setSpeedTestDebugLogsEnabled: (enabled) => {
+        SpeedCheckerPlugin.setSpeedTestDebugLogsEnabled(enabled);
+    },
     addTestStartedListener: (event) => {
         const subscription = speedcheckerEvents.addListener('onTestStarted', (eventData) => {
             const { status, ping, jitter, percent, downloadTransferredMb, uploadTransferredMb, currentSpeed, downloadSpeed, uploadSpeed, server, connectionType, error } = eventData;

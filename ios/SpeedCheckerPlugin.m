@@ -58,6 +58,10 @@ RCT_EXPORT_METHOD(stopTest) {
     }];
 }
 
+RCT_EXPORT_METHOD(setSpeedTestDebugLogsEnabled:(BOOL)enabled) {
+    InternetSpeedTest.debugLogsEnabled = enabled;
+}
+
 #pragma mark - Helpers
 - (void)sendErrorResult:(SpeedTestError)error {
     NSDictionary *dict = @{@"error": [self descriptionForError:error]};
