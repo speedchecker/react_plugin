@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency 'SpeedcheckerSDK', '2.0.2'
+  s.dependency 'SpeedcheckerSDK', '2.0.5'
 end
 
